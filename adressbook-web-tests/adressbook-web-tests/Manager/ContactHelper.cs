@@ -7,7 +7,7 @@ using adressbook_web_tests.Dtos;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace adressbook_web_tests
+namespace adressbook_web_tests.Manager
 {
     public class ContactHelper : HelperBase
     {

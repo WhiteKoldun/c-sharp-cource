@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using adressbook_web_tests.Dtos;
 using OpenQA.Selenium;
 
-namespace adressbook_web_tests
+namespace adressbook_web_tests.Manager
 {
     public class GroupHelper : HelperBase
     {

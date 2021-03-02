@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using adressbook_web_tests.Dtos;
 
-namespace adressbook_web_tests
+namespace adressbook_web_tests.Tests
 {
     [TestFixture]
     public class GroupCreationTests : TestBase
@@ -12,14 +12,14 @@ namespace adressbook_web_tests
         [Test]
         public void CreateNewValidGroup()
         {
-            navigator.GoToHomePage(baseURL);
-            loginHelper.Login(adminAccount);
-            navigator.GoToGroupsPage(baseURL);
-            groupHelper.InitGroupCreation();
-            groupHelper.FillGroupForm(groupsForm);
-            groupHelper.SubmitGroupCreation();
-            navigator.GoToGroupsPage(baseURL);
-            loginHelper.Logout();
+            app.Navigation.GoToHomePage();
+            app.Auth.Login(adminAccount);
+            app.Navigation.GoToGroupsPage();
+            app.Group.InitGroupCreation();
+            app.Group.FillGroupForm(groupsForm);
+            app.Group.SubmitGroupCreation();
+            app.Navigation.GoToGroupsPage();
+            app.Auth.Logout();
         }
     }
 }

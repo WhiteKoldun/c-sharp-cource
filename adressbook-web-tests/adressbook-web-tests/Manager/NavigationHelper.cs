@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using adressbook_web_tests.Dtos;
 using OpenQA.Selenium;
 
-namespace adressbook_web_tests
+namespace adressbook_web_tests.Manager
 {
     public class NavigationHelper : HelperBase
     {
@@ -17,16 +17,16 @@ namespace adressbook_web_tests
         {
             this.baseUrl = baseUrl;
         }
-        public void GoToGroupsPage(string baseUrl)
+        public void GoToGroupsPage()
         {
             driver.Navigate().GoToUrl(baseUrl + "/addressbook/group.php");
         }
 
-        public void GoToHomePage(string baseUrl)
+        public void GoToHomePage()
         {
             driver.Navigate().GoToUrl(baseUrl + "/addressbook/");
         }
-        public void GoToAddNewPage(string baseUrl)
+        public void GoToAddNewPage()
         {
             driver.Navigate().GoToUrl(baseUrl + "/addressbook/edit.php");
         }

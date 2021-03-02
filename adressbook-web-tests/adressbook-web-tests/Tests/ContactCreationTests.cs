@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using adressbook_web_tests.Dtos;
 
-namespace adressbook_web_tests
+namespace adressbook_web_tests.Tests
 {
     [TestFixture]
     public class CreateNewContact : TestBase
@@ -12,13 +12,13 @@ namespace adressbook_web_tests
         [Test]
         public void CreateNewValidContact()
         {
-            navigator.GoToHomePage(baseURL);
-            loginHelper.Login(adminAccount);
-            navigator.GoToAddNewPage(baseURL);
-            contact.FillContactForm(contactsForm);
-            contact.SubmitContactCreation();
-            navigator.GoToHomePage(baseURL);
-            loginHelper.Logout();
+            app.Navigation.GoToHomePage();
+            app.Auth.Login(adminAccount);
+            app.Navigation.GoToAddNewPage();
+            app.Contact.FillContactForm(contactsForm);
+            app.Contact.SubmitContactCreation();
+            app.Navigation.GoToHomePage();
+            app.Auth.Logout();
         }
     }
 }
