@@ -10,13 +10,13 @@ namespace adressbook_web_tests
         [Test]
         public void DeleteExistGroupTest()
         {
-            OpenHomePage(baseURL);
-            Login(adminAccount);
-            GoToGroupsPage();
-            SelectGroup(1);
-            DeleteSelectedGroup();
-            GoToGroupsPage();
-            Logout();
+            navigator.GoToHomePage(baseURL);
+            loginHelper.Login(adminAccount);
+            navigator.GoToGroupsPage(baseURL);
+            groupHelper.SelectGroup(1);
+            groupHelper.DeleteSelectedGroup();
+            navigator.GoToGroupsPage(baseURL);
+            loginHelper.Logout();
         }
     }
 }

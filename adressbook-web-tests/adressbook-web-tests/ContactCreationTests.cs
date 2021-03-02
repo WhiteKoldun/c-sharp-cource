@@ -12,13 +12,13 @@ namespace adressbook_web_tests
         [Test]
         public void CreateNewValidContact()
         {
-            OpenHomePage(baseURL);
-            Login(adminAccount);
-            InitContactCreation();
-            FillContactForm(contactsForm);
-            SubmitContactCreation();
-            GoToHomepage();
-            Logout();
+            navigator.GoToHomePage(baseURL);
+            loginHelper.Login(adminAccount);
+            navigator.GoToAddNewPage(baseURL);
+            contact.FillContactForm(contactsForm);
+            contact.SubmitContactCreation();
+            navigator.GoToHomePage(baseURL);
+            loginHelper.Logout();
         }
     }
 }

@@ -12,14 +12,14 @@ namespace adressbook_web_tests
         [Test]
         public void CreateNewValidGroup()
         {
-            OpenHomePage(baseURL);
-            Login(adminAccount);
-            GoToGroupsPage();
-            InitGroupCreation();
-            FillGroupForm(groupsForm);
-            SubmitGroupCreation();
-            GoToGroupsPage();
-            Logout();
+            navigator.GoToHomePage(baseURL);
+            loginHelper.Login(adminAccount);
+            navigator.GoToGroupsPage(baseURL);
+            groupHelper.InitGroupCreation();
+            groupHelper.FillGroupForm(groupsForm);
+            groupHelper.SubmitGroupCreation();
+            navigator.GoToGroupsPage(baseURL);
+            loginHelper.Logout();
         }
     }
 }
