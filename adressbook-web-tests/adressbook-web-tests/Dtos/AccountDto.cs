@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace adressbook_web_tests.Dtos
 {
-    class AccountDto
+    public class AccountDto
     {
         public AccountDto(string username, string password)
         {

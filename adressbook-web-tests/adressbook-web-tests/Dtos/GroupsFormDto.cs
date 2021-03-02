@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace adressbook_web_tests.Dtos
 {
-    class GroupsFormDto
+    public class GroupsFormDto
     {
         public GroupsFormDto(string name, string header, string footer)
         {

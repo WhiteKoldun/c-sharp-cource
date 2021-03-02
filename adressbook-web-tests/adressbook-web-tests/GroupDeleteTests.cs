@@ -4,20 +4,18 @@ using adressbook_web_tests.Dtos;
 namespace adressbook_web_tests
 {
     [TestFixture]
-    public class CreateNewContact : TestBase
+    public class DeleteExistGroup : TestBase
     {
         private AccountDto adminAccount = new AccountDto("admin", "secret");
-        private ContactsFormDto contactsForm = new ContactsFormDto();
-        
         [Test]
-        public void CreateNewValidContact()
+        public void DeleteExistGroupTest()
         {
             OpenHomePage(baseURL);
             Login(adminAccount);
-            InitContactCreation();
-            FillContactForm(contactsForm);
-            SubmitContactCreation();
-            GoToHomepage();
+            GoToGroupsPage();
+            SelectGroup(1);
+            DeleteSelectedGroup();
+            GoToGroupsPage();
             Logout();
         }
     }

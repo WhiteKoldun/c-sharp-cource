@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace adressbook_web_tests.Dtos
 {
-    class ContactsFormDto
+    public class ContactsFormDto
     {
         public string Firstname { get; set; } = "first name text";
         public string Middlename { get; set; } = "middle name text";
