@@ -11,10 +11,10 @@ namespace adressbook_web_tests.Manager
 {
     public class ContactHelper : HelperBase
     {
-        private ContactsFormDto contactsFormDto;
-        public ContactHelper(IWebDriver driver, ContactsFormDto contactsFormDto) : base(driver)
+        
+        public ContactHelper(IWebDriver driver) : base(driver)
         {
-            this.contactsFormDto = contactsFormDto;
+            
         }
         public void SubmitContactCreation()
         {

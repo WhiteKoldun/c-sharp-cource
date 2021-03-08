@@ -10,11 +10,8 @@ namespace adressbook_web_tests.Manager
 {
     public class GroupHelper : HelperBase
     {
-        private GroupsFormDto groupsFormDto;
-
-        public GroupHelper(IWebDriver driver, GroupsFormDto groupsFormDto) : base(driver)
+        public GroupHelper(IWebDriver driver) : base(driver)
         {
-            this.groupsFormDto = groupsFormDto;
         }
         public void InitGroupCreation()
         {

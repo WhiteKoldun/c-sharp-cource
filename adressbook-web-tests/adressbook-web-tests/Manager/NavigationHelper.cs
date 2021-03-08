@@ -10,12 +10,11 @@ namespace adressbook_web_tests.Manager
 {
     public class NavigationHelper : HelperBase
     {
-        private string baseUrl;
+        private string baseUrl = "http://localhost:8080";
 
 
-        public NavigationHelper(IWebDriver driver, string baseUrl) : base(driver)
+        public NavigationHelper(IWebDriver driver) : base(driver)
         {
-            this.baseUrl = baseUrl;
         }
         public void GoToGroupsPage()
         {

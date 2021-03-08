@@ -8,20 +8,14 @@ namespace adressbook_web_tests.Manager
     public class ApplicationManager
     {
         protected IWebDriver driver;
-        protected string baseURL;
-        protected GroupsFormDto groupsFormDto;
-        protected ContactsFormDto contactsFormDto;
-        
+
         public ApplicationManager()
         {
-            contactsFormDto = new ContactsFormDto();
-            groupsFormDto = new GroupsFormDto("asdasd", "rtynhrtyj", "ASDad");
             driver = new FirefoxDriver();
-            baseURL = "http://localhost:8080";
-            Contact = new ContactHelper(driver, contactsFormDto);
+            Contact = new ContactHelper(driver);
             Auth = new LoginHelper(driver);
-            Navigation = new NavigationHelper(driver, baseURL);
-            Group = new GroupHelper(driver, groupsFormDto);
+            Navigation = new NavigationHelper(driver);
+            Group = new GroupHelper(driver);
         }
 
         public void Stop()
