@@ -5,10 +5,14 @@ namespace adressbook_web_tests.Manager
     public class HelperBase
     {
         protected IWebDriver driver;
+        protected ApplicationManager manager;
+        protected string baseUrl = "http://localhost:8080";
 
-        public HelperBase(IWebDriver driver)
+        public HelperBase(ApplicationManager manager)
         {
-            this.driver = driver;
+            driver = manager.Driver;
+            this.manager = manager;
+
         }
     }
 }

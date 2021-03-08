@@ -8,13 +8,11 @@ using OpenQA.Selenium;
 
 namespace adressbook_web_tests.Manager
 {
-    public class LoginHelper
+    public class LoginHelper : HelperBase
     {
-        private IWebDriver driver;
-
-        public LoginHelper(IWebDriver driver)
+        public LoginHelper(ApplicationManager manager) : base(manager)
         {
-            this.driver = driver;
+            
         }
 
         public void Login(AccountDto accountDto)

@@ -10,27 +10,57 @@ namespace adressbook_web_tests.Manager
 {
     public class GroupHelper : HelperBase
     {
-        public GroupHelper(IWebDriver driver) : base(driver)
+        public GroupHelper(ApplicationManager manager) 
+            : base(manager)
         {
-        }
-        public void InitGroupCreation()
-        {
-            driver.FindElement(By.Name("new")).Click();
-        }
-        public void DeleteSelectedGroup()
-        {
-            driver.FindElement(By.XPath("(//input[@name='delete'])[2]")).Click();
         }
 
-        public void SelectGroup(int index)
+        public GroupHelper Create(GroupsFormDto groupsFormValid)
+        {
+            
+            manager.Navigation.GoToGroupsPage();
+            InitGroupCreation();
+            FillGroupForm(groupsFormValid);
+            SubmitGroupCreation();
+            manager.Navigation.GoToGroupsPage();
+            return this;
+        }
+        public GroupHelper Delete(int v)
+        {
+            manager.Navigation.GoToGroupsPage();
+            manager.Group.SelectGroup(v)
+                .DeleteSelectedGroup();
+            manager.Navigation.GoToGroupsPage();
+            return this;
+        }
+        public GroupHelper InitGroupCreation()
+        {
+            driver.FindElement(By.Name("new")).Click();
+            return this;
+        }
+
+        public GroupHelper Modify(int groupToModify, GroupsFormDto dataToModify)
+        {
+            return this;
+        }
+
+        public GroupHelper DeleteSelectedGroup()
+        {
+            driver.FindElement(By.XPath("(//input[@name='delete'])[2]")).Click();
+            return this;
+        }
+
+        public GroupHelper SelectGroup(int index)
         {
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            return this;
         }
-        public void SubmitGroupCreation()
+        public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            return this;
         }
-        public void FillGroupForm(GroupsFormDto groupsFormDto)
+        public GroupHelper FillGroupForm(GroupsFormDto groupsFormDto)
         {
             driver.FindElement(By.Name("group_name")).Click();
             driver.FindElement(By.Name("group_name")).Clear();
@@ -41,6 +71,9 @@ namespace adressbook_web_tests.Manager
             driver.FindElement(By.Name("group_footer")).Clear();
             driver.FindElement(By.Name("group_footer")).SendKeys(groupsFormDto.Footer);
             driver.FindElement(By.Id("content")).Click();
+            return this;
         }
+
+        
     }
 }

@@ -6,19 +6,20 @@ namespace adressbook_web_tests.Tests
     [TestFixture]
     public class GroupCreationTests : TestBase
     {
-        private AccountDto adminAccount = new AccountDto("admin","secret");
-        private GroupsFormDto groupsForm = new GroupsFormDto("asdasd","rtynhrtyj","ASDad");
         
+        private GroupsFormDto groupsFormValid = new GroupsFormDto("asdasd","rtynhrtyj","ASDad");
+        private GroupsFormDto groupsFormEmpty = new GroupsFormDto("", "", "");
+
         [Test]
         public void CreateNewValidGroup()
         {
-            app.Navigation.GoToHomePage();
-            app.Auth.Login(adminAccount);
-            app.Navigation.GoToGroupsPage();
-            app.Group.InitGroupCreation();
-            app.Group.FillGroupForm(groupsForm);
-            app.Group.SubmitGroupCreation();
-            app.Navigation.GoToGroupsPage();
+            app.Group.Create(groupsFormValid);
+            app.Auth.Logout();
+        }
+        [Test]
+        public void CreateNewEmptyGroup()
+        {
+            app.Group.Create(groupsFormEmpty);
             app.Auth.Logout();
         }
     }

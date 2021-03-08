@@ -12,7 +12,7 @@ namespace adressbook_web_tests.Manager
     public class ContactHelper : HelperBase
     {
         
-        public ContactHelper(IWebDriver driver) : base(driver)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {
             
         }

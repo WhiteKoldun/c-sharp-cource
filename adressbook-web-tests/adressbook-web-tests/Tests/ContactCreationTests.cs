@@ -6,14 +6,11 @@ namespace adressbook_web_tests.Tests
     [TestFixture]
     public class CreateNewContact : TestBase
     {
-        private AccountDto adminAccount = new AccountDto("admin", "secret");
         private ContactsFormDto contactsForm = new ContactsFormDto();
         
         [Test]
         public void CreateNewValidContact()
         {
-            app.Navigation.GoToHomePage();
-            app.Auth.Login(adminAccount);
             app.Navigation.GoToAddNewPage();
             app.Contact.FillContactForm(contactsForm);
             app.Contact.SubmitContactCreation();
