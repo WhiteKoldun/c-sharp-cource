@@ -16,11 +16,8 @@ namespace adressbook_web_tests.Manager
 
         public LoginHelper Login(AccountDto accountDto)
         {
-            driver.FindElement(By.Name("user")).Click();
-            driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(accountDto.Username);
-            driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(accountDto.Password);
+            Type(By.Name("user"), accountDto.Username);
+            Type(By.Name("pass"), accountDto.Password);
             driver.FindElement(By.Id("LoginForm")).Click();
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
             return this;

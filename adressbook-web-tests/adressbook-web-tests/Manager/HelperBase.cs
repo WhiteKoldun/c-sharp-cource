@@ -14,5 +14,15 @@ namespace adressbook_web_tests.Manager
             this.manager = manager;
 
         }
+        public HelperBase Type(By locator, string text)
+        {
+            if (text != null)
+            {
+                driver.FindElement(locator).Click();
+                driver.FindElement(locator).Clear();
+                driver.FindElement(locator).SendKeys(text);
+            }
+            return this;
+        }
     }
 }

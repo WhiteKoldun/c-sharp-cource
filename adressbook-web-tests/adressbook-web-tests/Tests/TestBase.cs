@@ -8,27 +8,14 @@ namespace adressbook_web_tests.Tests
 {
     public class TestBase
     {
-        protected StringBuilder verificationErrors;
         protected ApplicationManager app;
         private AccountDto adminAccount = new AccountDto("admin", "secret");
 
         [SetUp]
         public void SetupTest()
         {
-           verificationErrors = new StringBuilder();
-           app = new ApplicationManager();
-           app.Navigation.GoToHomePage();
+            app = ApplicationManager.GetInstance();
            app.Auth.Login(adminAccount);
         }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            app.Stop();
-        }
-        
-
-
-        
     }
 }

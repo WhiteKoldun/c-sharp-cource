@@ -2,6 +2,7 @@
 using adressbook_web_tests.Dtos;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using System.Threading;
 
 namespace adressbook_web_tests.Manager
 {
@@ -9,10 +10,9 @@ namespace adressbook_web_tests.Manager
     {
         protected IWebDriver driver;
         protected string baseUrl;
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
-
-
-        public ApplicationManager()
+        private ApplicationManager()
         {
             driver = new FirefoxDriver();
             Contact = new ContactHelper(this);
@@ -20,7 +20,12 @@ namespace adressbook_web_tests.Manager
             Navigation = new NavigationHelper(this);
             Group = new GroupHelper(this);
             baseUrl = "http://localhost:8080";
-    }
+        }
+        ~ApplicationManager()
+        {
+            driver.Quit();
+        }
+
         public IWebDriver Driver
         {
             get
@@ -28,9 +33,17 @@ namespace adressbook_web_tests.Manager
                 return driver;
             }
         }
-        public void Stop()
+
+        public static ApplicationManager GetInstance()
         {
-            driver.Quit();
+            if (! app.IsValueCreated) //условие звучит как "если value не создано", то бишь, если в текущем треде нет обьекта этого класса
+            {
+                ApplicationManager newInstance = new ApplicationManager();
+                newInstance.Navigation.GoToHomePage();
+                app.Value = newInstance;
+                
+            }
+            return app.Value;
         }
 
         public LoginHelper Auth { get; set; }

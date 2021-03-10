@@ -72,17 +72,15 @@ namespace adressbook_web_tests.Manager
         }
         public GroupHelper FillGroupForm(GroupsFormDto groupsFormDto)
         {
-            driver.FindElement(By.Name("group_name")).Click();
-            driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(groupsFormDto.Name);
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(groupsFormDto.Header);
-            driver.FindElement(By.Name("group_footer")).Click();
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(groupsFormDto.Footer);
+            Type(By.Name("group_name"), groupsFormDto.Name);
+            Type(By.Name("group_header"), groupsFormDto.Header);
+            Type(By.Name("group_footer"), groupsFormDto.Footer);
             driver.FindElement(By.Id("content")).Click();
             return this;
         }
+
+        
+
         public GroupHelper SubmitGroupModification()
         {
             driver.FindElement(By.Name("update")).Click();

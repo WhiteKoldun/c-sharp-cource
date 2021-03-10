@@ -7,11 +7,18 @@ namespace adressbook_web_tests.Tests.Contact
     public class GroupModificationTests : TestBase
     {
         GroupsFormDto dataToModify = new GroupsFormDto("name mod","head mod","foot mod");
+        GroupsFormDto dataToModifyOneField = new GroupsFormDto(null, "ONLY head mod", null);
         private int groupToModify = 1;
         [Test]
-        public void GroupModificationTest()
+        public void GroupModificationTestAllFileds()
         {
             app.Group.Modify(groupToModify, dataToModify);
+            app.Auth.Logout();
+        }
+        [Test]
+        public void GroupModificationTestOneFiled()
+        {
+            app.Group.Modify(groupToModify, dataToModifyOneField);
             app.Auth.Logout();
         }
     }
