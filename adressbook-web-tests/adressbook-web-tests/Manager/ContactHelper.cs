@@ -14,13 +14,88 @@ namespace adressbook_web_tests.Manager
         
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
-            
         }
-        public void SubmitContactCreation()
+
+        public ContactHelper Create(ContactsFormDto contactsForm)
+        {
+            manager.Navigation.GoToAddNewPage();
+            FillContactForm(contactsForm);
+            SubmitContactCreation();
+            manager.Navigation.GoToHomePage();
+            return this;
+        }
+        public ContactHelper Delete(int contactNumber)
+        {
+            manager.Navigation.GoToHomePage();
+            SelectContactById(contactNumber);
+            ConfirmDelete();
+            manager.Navigation.GoToHomePage();
+            return this;
+        }
+        public ContactHelper DeleteFirstExist()
+        {
+            manager.Navigation.GoToHomePage();
+            SelectExistContact();
+            ConfirmDelete();
+            manager.Navigation.GoToHomePage();
+            return this;
+        }
+        public ContactHelper Modify(int contactPosition,ContactsFormDto contactsForm)
+        {
+            manager.Navigation.GoToHomePage();
+            InitEditionOfContact(contactPosition);
+            FillContactForm(contactsForm);
+            SubmitContactUpdate();
+            manager.Navigation.GoToHomePage();
+            return this;
+        }
+        public ContactHelper ConfirmDelete()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
+        public ContactHelper InitEditionOfContact(int contactPosition)
+        {
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])["+contactPosition+"]")).Click();
+            return this;
+        }
+
+        public ContactHelper SelectExistContact()
+        {
+            int i;
+            string id = null;
+            for (i = 1; id == null; i++) 
+            {
+                try
+                {
+                    driver.FindElement(By.XPath("//input[@type='checkbox' and @name='selected[]' and @value= '"+i+ "' and @title = 'Select (first name text last name text)']")).Click();
+                    id = "ne null";
+                }
+                catch
+                {
+                   continue;
+                }
+            }
+            return this;
+        }
+        public ContactHelper SelectContactById(int contactNumber)
+        {
+            driver.FindElement(By.XPath("//input[@type='checkbox' and @name='selected[]' and @value= '" + contactNumber + "' and @title = 'Select (first name text last name text)']")).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            return this;
         }
-        public void FillContactForm(ContactsFormDto contactsFormDto)
+        public ContactHelper SubmitContactUpdate()
+        {
+            driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
+            return this;
+        }
+        public ContactHelper FillContactForm(ContactsFormDto contactsFormDto)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
@@ -91,7 +166,10 @@ namespace adressbook_web_tests.Manager
             driver.FindElement(By.Name("notes")).Click();
             driver.FindElement(By.Name("notes")).Clear();
             driver.FindElement(By.Name("notes")).SendKeys(contactsFormDto.Notes);
-            driver.FindElement(By.Name("theform")).Click();
+            //driver.FindElement(By.Name("theform")).Click();
+            return this;
         }
+
+        
     }
 }

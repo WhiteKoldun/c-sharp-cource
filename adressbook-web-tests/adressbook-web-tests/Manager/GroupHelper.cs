@@ -28,21 +28,31 @@ namespace adressbook_web_tests.Manager
         public GroupHelper Delete(int v)
         {
             manager.Navigation.GoToGroupsPage();
-            manager.Group.SelectGroup(v)
-                .DeleteSelectedGroup();
+            SelectGroup(v);
+            DeleteSelectedGroup();
             manager.Navigation.GoToGroupsPage();
             return this;
         }
+        public GroupHelper Modify(int groupToModify, GroupsFormDto dataToModify)
+        {
+            manager.Navigation.GoToGroupsPage();
+            SelectGroup(groupToModify);
+            InitGroupModification();
+            FillGroupForm(dataToModify);
+            SubmitGroupModification();
+            manager.Navigation.GoToGroupsPage();
+            return this;
+        }
+
+        
+
         public GroupHelper InitGroupCreation()
         {
             driver.FindElement(By.Name("new")).Click();
             return this;
         }
 
-        public GroupHelper Modify(int groupToModify, GroupsFormDto dataToModify)
-        {
-            return this;
-        }
+        
 
         public GroupHelper DeleteSelectedGroup()
         {
@@ -73,7 +83,17 @@ namespace adressbook_web_tests.Manager
             driver.FindElement(By.Id("content")).Click();
             return this;
         }
+        public GroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
 
-        
+        public GroupHelper InitGroupModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
+            return this;
+        }
+
     }
 }

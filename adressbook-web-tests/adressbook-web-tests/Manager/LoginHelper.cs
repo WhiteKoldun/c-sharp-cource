@@ -12,10 +12,9 @@ namespace adressbook_web_tests.Manager
     {
         public LoginHelper(ApplicationManager manager) : base(manager)
         {
-            
         }
 
-        public void Login(AccountDto accountDto)
+        public LoginHelper Login(AccountDto accountDto)
         {
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
@@ -24,10 +23,12 @@ namespace adressbook_web_tests.Manager
             driver.FindElement(By.Name("pass")).SendKeys(accountDto.Password);
             driver.FindElement(By.Id("LoginForm")).Click();
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+            return this;
         }
-        public void Logout()
+        public LoginHelper Logout()
         {
             driver.FindElement(By.LinkText("Logout")).Click();
+            return this;
         }
     }
 }

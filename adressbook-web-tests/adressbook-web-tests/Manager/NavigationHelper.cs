@@ -13,18 +13,21 @@ namespace adressbook_web_tests.Manager
         public NavigationHelper(ApplicationManager manager) : base(manager)
         {
         }
-        public void GoToGroupsPage()
+        public NavigationHelper GoToGroupsPage()
         {
             driver.Navigate().GoToUrl(baseUrl + "/addressbook/group.php");
+            return this;
         }
 
-        public void GoToHomePage()
+        public NavigationHelper GoToHomePage()
         {
             driver.Navigate().GoToUrl(baseUrl + "/addressbook/");
+            return this;
         }
-        public void GoToAddNewPage()
+        public NavigationHelper GoToAddNewPage()
         {
             driver.Navigate().GoToUrl(baseUrl + "/addressbook/edit.php");
+            return this;
         }
     }
 }

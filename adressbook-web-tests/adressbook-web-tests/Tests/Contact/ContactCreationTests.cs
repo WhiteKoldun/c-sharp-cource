@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using adressbook_web_tests.Dtos;
 
-namespace adressbook_web_tests.Tests
+namespace adressbook_web_tests.Tests.Contact
 {
     [TestFixture]
     public class CreateNewContact : TestBase
@@ -11,10 +11,7 @@ namespace adressbook_web_tests.Tests
         [Test]
         public void CreateNewValidContact()
         {
-            app.Navigation.GoToAddNewPage();
-            app.Contact.FillContactForm(contactsForm);
-            app.Contact.SubmitContactCreation();
-            app.Navigation.GoToHomePage();
+            app.Contact.Create(contactsForm);
             app.Auth.Logout();
         }
     }

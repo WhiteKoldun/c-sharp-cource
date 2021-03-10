@@ -64,15 +64,17 @@
     <Compile Include="Dtos\AccountDto.cs" />
     <Compile Include="Dtos\ContactsFormDto.cs" />
     <Compile Include="Dtos\GroupsFormDto.cs" />
-    <Compile Include="Tests\GroupDeleteTests.cs" />
+    <Compile Include="Tests\Contact\ContactDeleteTests.cs" />
+    <Compile Include="Tests\Contact\ContactModificationTests.cs" />
+    <Compile Include="Tests\Group\GroupDeleteTests.cs" />
     <Compile Include="Manager\GroupHelper.cs" />
     <Compile Include="Manager\HelperBase.cs" />
     <Compile Include="Manager\LoginHelper.cs" />
     <Compile Include="Manager\NavigationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\GroupCreationTests.cs" />
-    <Compile Include="Tests\ContactCreationTests.cs" />
-    <Compile Include="Tests\GroupModificationTests.cs" />
+    <Compile Include="Tests\Group\GroupCreationTests.cs" />
+    <Compile Include="Tests\Contact\ContactCreationTests.cs" />
+    <Compile Include="Tests\Group\GroupModificationTests.cs" />
     <Compile Include="Tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
