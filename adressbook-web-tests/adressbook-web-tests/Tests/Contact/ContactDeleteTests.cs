@@ -10,6 +10,7 @@ namespace adressbook_web_tests.Tests.Contact
         public void DeleteExistContact()
         {
             //app.Contact.Delete(contactNumber);
+            app.Contact.CheckAnyContactExist(new ContactsFormDto());
             app.Contact.DeleteFirstExist();
             
         }

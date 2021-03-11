@@ -11,8 +11,9 @@ namespace adressbook_web_tests.Tests.Contact
         [Test]
         public void ContactModificationTest()
         {
+            app.Contact.CheckAnyContactExist(new ContactsFormDto());
             contactsForm.Lastname = "LAST NAME MODIFY";
-            app.Contact.Modify(2, contactsForm);
+            app.Contact.Modify(1, contactsForm);
             
         }
     }

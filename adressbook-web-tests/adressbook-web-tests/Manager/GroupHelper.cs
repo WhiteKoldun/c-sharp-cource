@@ -15,6 +15,19 @@ namespace adressbook_web_tests.Manager
         {
         }
 
+        public GroupHelper CheckAnyGroupExist(GroupsFormDto groupsForm)
+        {
+            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])")))
+            {
+                return this;
+            }
+            else
+            {
+                Create(groupsForm);
+            }
+
+            return this;
+        }
         public GroupHelper Create(GroupsFormDto groupsFormValid)
         {
             

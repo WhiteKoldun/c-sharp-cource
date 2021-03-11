@@ -16,6 +16,22 @@ namespace adressbook_web_tests.Manager
         {
         }
 
+        public ContactHelper CheckAnyContactExist(ContactsFormDto contactsFormDto)
+        {
+            if (IsElementPresent(By.XPath(
+                "//input[@type='checkbox' and @name='selected[]' and @title = 'Select (first name text last name text)']"))
+            )
+            {
+                return this;
+            }
+            else
+            {
+                Create(contactsFormDto);
+            }
+
+            return this;
+        }
+
         public ContactHelper Create(ContactsFormDto contactsForm)
         {
             manager.Navigation.GoToAddNewPage();
@@ -65,6 +81,7 @@ namespace adressbook_web_tests.Manager
         {
             int i;
             string id = null;
+            /*
             for (i = 1; id == null; i++) 
             {
                 try
@@ -76,7 +93,9 @@ namespace adressbook_web_tests.Manager
                 {
                    continue;
                 }
-            }
+            }//*/
+            // через цикл с catch существующий айдишник ищет очень долго, быстрее выбрать первый по имени и заголовку
+            driver.FindElement(By.XPath("//input[@type='checkbox' and @name='selected[]' and @title = 'Select (first name text last name text)']")).Click();
             return this;
         }
         public ContactHelper SelectContactById(int contactNumber)
