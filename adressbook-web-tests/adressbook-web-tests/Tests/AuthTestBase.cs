@@ -17,5 +17,11 @@ namespace adressbook_web_tests.Tests
         {
             app.Auth.Login(adminAccount);
         }
+
+        [TearDown]
+        public void EndWithLogout()
+        {
+            app.Auth.Logout();
+        }
     }
 }

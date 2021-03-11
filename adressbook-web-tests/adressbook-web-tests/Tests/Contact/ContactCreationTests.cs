@@ -12,7 +12,7 @@ namespace adressbook_web_tests.Tests.Contact
         public void CreateNewValidContact()
         {
             app.Contact.Create(contactsForm);
-            app.Auth.Logout();
+            
         }
     }
 }

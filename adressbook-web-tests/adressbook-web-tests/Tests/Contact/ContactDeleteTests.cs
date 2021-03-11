@@ -11,7 +11,7 @@ namespace adressbook_web_tests.Tests.Contact
         {
             //app.Contact.Delete(contactNumber);
             app.Contact.DeleteFirstExist();
-            app.Auth.Logout();
+            
         }
 
     }

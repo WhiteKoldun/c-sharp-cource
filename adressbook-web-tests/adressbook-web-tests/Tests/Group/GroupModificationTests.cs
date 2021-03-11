@@ -13,13 +13,13 @@ namespace adressbook_web_tests.Tests.Contact
         public void GroupModificationTestAllFields()
         {
             app.Group.Modify(groupToModify, dataToModify);
-            app.Auth.Logout();
+            
         }
         [Test]
         public void GroupModificationTestOneFiled()
         {
             app.Group.Modify(groupToModify, dataToModifyOneField);
-            app.Auth.Logout();
+            
         }
     }
 }

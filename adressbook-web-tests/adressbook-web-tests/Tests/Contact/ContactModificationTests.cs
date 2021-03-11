@@ -12,8 +12,8 @@ namespace adressbook_web_tests.Tests.Contact
         public void ContactModificationTest()
         {
             contactsForm.Lastname = "LAST NAME MODIFY";
-            app.Contact.Modify(1, contactsForm);
-            app.Auth.Logout();
+            app.Contact.Modify(2, contactsForm);
+            
         }
     }
 }

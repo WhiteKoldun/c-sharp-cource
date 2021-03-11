@@ -16,6 +16,7 @@ namespace adressbook_web_tests.Manager
 
         public LoginHelper Login(AccountDto accountDto)
         {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             if (IsLoggedIn())
             {
                 if (IsLoggedIn(accountDto))
@@ -29,18 +30,19 @@ namespace adressbook_web_tests.Manager
             Type(By.Name("pass"), accountDto.Password);
             driver.FindElement(By.Id("LoginForm")).Click();
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             return this;
         }
 
         public LoginHelper Logout()
         {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             if (IsLoggedIn())
             {
                 driver.FindElement(By.LinkText("Logout")).Click();
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+                
             }
-
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             return this;
         }
         public bool IsLoggedIn(AccountDto accountDto)

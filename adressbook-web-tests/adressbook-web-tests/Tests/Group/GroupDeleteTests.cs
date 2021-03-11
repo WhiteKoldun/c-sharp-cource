@@ -10,7 +10,7 @@ namespace adressbook_web_tests.Tests.Contact
         public void DeleteExistGroupTest()
         {
             app.Group.Delete(1);
-            app.Auth.Logout();
+            
         }
     }
 }

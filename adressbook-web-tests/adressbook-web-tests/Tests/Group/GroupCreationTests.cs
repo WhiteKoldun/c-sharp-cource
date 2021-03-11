@@ -14,13 +14,13 @@ namespace adressbook_web_tests.Tests.Contact
         public void CreateNewValidGroup()
         {
             app.Group.Create(groupsFormValid);
-            app.Auth.Logout();
+         
         }
         [Test]
         public void CreateNewEmptyGroup()
         {
             app.Group.Create(groupsFormEmpty);
-            app.Auth.Logout();
+            
         }
     }
 }
