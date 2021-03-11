@@ -4,7 +4,7 @@ using adressbook_web_tests.Dtos;
 namespace adressbook_web_tests.Tests.Contact
 {
     [TestFixture]
-    public class CreateNewContact : TestBase
+    public class CreateNewContact : AuthTestBase
     {
         private ContactsFormDto contactsForm = new ContactsFormDto();
         

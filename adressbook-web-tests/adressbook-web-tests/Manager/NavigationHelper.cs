@@ -15,18 +15,56 @@ namespace adressbook_web_tests.Manager
         }
         public NavigationHelper GoToGroupsPage()
         {
-            driver.Navigate().GoToUrl(baseUrl + "/addressbook/group.php");
+            string url = baseUrl + "/addressbook/group.php";
+            GoToUrlMeth(url, By.Name("new"));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
             return this;
         }
 
         public NavigationHelper GoToHomePage()
         {
-            driver.Navigate().GoToUrl(baseUrl + "/addressbook/");
+            string url = baseUrl + "/addressbook/";
+            GoToUrlMeth(url, By.XPath("//*"));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
             return this;
         }
         public NavigationHelper GoToAddNewPage()
         {
-            driver.Navigate().GoToUrl(baseUrl + "/addressbook/edit.php");
+            string url = baseUrl + "/addressbook/edit.php";
+            GoToUrlMeth(url, By.Name("title"));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+            return this;
+
+        }
+
+        public bool IsNotAlreadyOnPage(string url)
+        {
+            try
+            {
+                if (driver.Url == url)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+        public NavigationHelper GoToUrlMeth(string url, By by)
+        {
+            if (IsNotAlreadyOnPage(url)
+            && IsElementPresent(by))
+            {
+                manager.Auth.LoginAdmin();
+                driver.Navigate().GoToUrl(url);
+                return this;
+            }
             return this;
         }
     }

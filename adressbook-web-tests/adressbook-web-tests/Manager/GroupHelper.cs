@@ -36,6 +36,7 @@ namespace adressbook_web_tests.Manager
         public GroupHelper Modify(int groupToModify, GroupsFormDto dataToModify)
         {
             manager.Navigation.GoToGroupsPage();
+            driver.Navigate().GoToUrl("");
             SelectGroup(groupToModify);
             InitGroupModification();
             FillGroupForm(dataToModify);

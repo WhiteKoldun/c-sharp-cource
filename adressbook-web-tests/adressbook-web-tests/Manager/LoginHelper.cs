@@ -16,15 +16,47 @@ namespace adressbook_web_tests.Manager
 
         public LoginHelper Login(AccountDto accountDto)
         {
+            if (IsLoggedIn())
+            {
+                if (IsLoggedIn(accountDto))
+                {
+                    return this;
+                }
+
+                Logout();
+            }
             Type(By.Name("user"), accountDto.Username);
             Type(By.Name("pass"), accountDto.Password);
             driver.FindElement(By.Id("LoginForm")).Click();
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
             return this;
         }
+
         public LoginHelper Logout()
         {
-            driver.FindElement(By.LinkText("Logout")).Click();
+            if (IsLoggedIn())
+            {
+                driver.FindElement(By.LinkText("Logout")).Click();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+            }
+
+            return this;
+        }
+        public bool IsLoggedIn(AccountDto accountDto)
+        {
+            return IsLoggedIn()
+                   && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text 
+                   == "(" + accountDto.Username + ")";
+        }
+
+        public bool IsLoggedIn()
+        {
+            return IsElementPresent(By.Name("logout"));
+        }
+        public LoginHelper LoginAdmin()
+        {
+            Login(new AccountDto("admin", "secret"));
             return this;
         }
     }

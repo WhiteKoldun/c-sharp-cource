@@ -5,7 +5,7 @@ using System;
 namespace adressbook_web_tests.Tests.Contact
 {
     [TestFixture]
-    public class ContactModificationTests : TestBase
+    public class ContactModificationTests : AuthTestBase
     {
         private ContactsFormDto contactsForm = new ContactsFormDto();
         [Test]

@@ -4,7 +4,7 @@ using adressbook_web_tests.Dtos;
 namespace adressbook_web_tests.Tests.Contact
 {
     [TestFixture]
-    public class ContactDeleteTests : TestBase
+    public class ContactDeleteTests : AuthTestBase
     {
         [Test]
         public void DeleteExistContact()

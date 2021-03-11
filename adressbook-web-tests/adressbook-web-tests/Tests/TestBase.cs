@@ -12,10 +12,9 @@ namespace adressbook_web_tests.Tests
         private AccountDto adminAccount = new AccountDto("admin", "secret");
 
         [SetUp]
-        public void SetupTest()
+        public void SetupTestApplicationManager()
         {
             app = ApplicationManager.GetInstance();
-           app.Auth.Login(adminAccount);
         }
     }
 }

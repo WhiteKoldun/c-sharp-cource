@@ -64,6 +64,7 @@
     <Compile Include="Dtos\AccountDto.cs" />
     <Compile Include="Dtos\ContactsFormDto.cs" />
     <Compile Include="Dtos\GroupsFormDto.cs" />
+    <Compile Include="Tests\AuthTestBase.cs" />
     <Compile Include="Tests\Contact\ContactDeleteTests.cs" />
     <Compile Include="Tests\Contact\ContactModificationTests.cs" />
     <Compile Include="Tests\Group\GroupDeleteTests.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Tests\Group\GroupCreationTests.cs" />
     <Compile Include="Tests\Contact\ContactCreationTests.cs" />
     <Compile Include="Tests\Group\GroupModificationTests.cs" />
+    <Compile Include="Tests\Login\LoginTests.cs" />
     <Compile Include="Tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>

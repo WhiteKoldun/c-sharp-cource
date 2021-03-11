@@ -10,7 +10,7 @@ namespace adressbook_web_tests.Manager
 
         public HelperBase(ApplicationManager manager)
         {
-            driver = manager.Driver;
+            this.driver = manager.Driver;
             this.manager = manager;
 
         }
@@ -23,6 +23,18 @@ namespace adressbook_web_tests.Manager
                 driver.FindElement(locator).SendKeys(text);
             }
             return this;
+        }
+        public bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
         }
     }
 }
